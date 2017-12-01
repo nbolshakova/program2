@@ -1,18 +1,21 @@
-| Language | Framework | Platform | Author |
-| -------- | -------- |--------|--------|
-| Java | Spring | Azure Web App, Virtual Machine| |
+# ux
 
+> A Vue example
 
-# Java Spring boot web application
+## Build Setup
 
-Sample Java Spring Boot web application that you can use to deploy on Azure.
+``` bash
+# install dependencies
+npm install
 
+# serve with hot reload at localhost:8080
+npm run dev
 
-## License:
+# build for production with minification
+npm run build
 
-See [LICENSE](LICENSE).
+# build for production and view the bundle analyzer report
+npm run build --report
+```
 
-## Contributing
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
