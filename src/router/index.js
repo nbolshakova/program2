@@ -1,21 +1,27 @@
 import Vue from 'vue'
-import Home from '../components/Home.vue'
-import About from '../components/About.vue'
-import Counter from '../components/Counter.vue'
-import Topics from '../components/Topics.vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const router = new VueRouter({
-  mode: 'history',
-  base: __dirname,
-  routes: [
-    { path: '/', component: Home },
-    { path: '/Topics', component: Topics },
-    { path: '/Counter', component: Counter },
-    { path: '/About', component: About }
-  ]
-})
+// route-level code splitting
+const createListView = id => () => import('../views/CreateListView').then(m => m.default(id))
+const ItemView = () => import('../views/ItemView.vue')
+const UserView = () => import('../views/UserView.vue')
 
-export default router
+export function createRouter () {
+  return new Router({
+    mode: 'history',
+    fallback: false,
+    scrollBehavior: () => ({ y: 0 }),
+    routes: [
+      { path: '/top/:page(\\d+)?', component: createListView('top') },
+      { path: '/new/:page(\\d+)?', component: createListView('new') },
+      { path: '/show/:page(\\d+)?', component: createListView('show') },
+      { path: '/ask/:page(\\d+)?', component: createListView('ask') },
+      { path: '/job/:page(\\d+)?', component: createListView('job') },
+      { path: '/item/:id(\\d+)', component: ItemView },
+      { path: '/user/:id', component: UserView },
+      { path: '/', redirect: '/top' }
+    ]
+  })
+}
